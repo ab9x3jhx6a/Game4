@@ -17,8 +17,11 @@ public class Mutation : MonoBehaviour {
 	public bool healthMutation = false;
 	public float healthChange = 0;
 
-	void Start () {
+	public Stats stats;
+
+	protected void Start () {
 		visualUpdate ();
+		stats = GetComponent<Stats>();
 	}
 	//call this function whenever a mutation is added or taken away from this Bacteria
 	public void visualUpdate(){
