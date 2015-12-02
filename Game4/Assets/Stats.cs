@@ -22,6 +22,27 @@ public class Stats : MonoBehaviour {
 	public float healing = .3f;//how much health this cell gains per second
 
 	
+	
+	void Awake(){
+		maxHealth = 0; //the amount of damage the cell can take. 
+		//curHealth; 
+		
+		fedness = 0; //The amount of energy the cell possesses. 
+		metabolism = 0; 
+		maturation = 0;
+		repoductionEfficiency = 0;
+		
+		aggression = 0; 
+		herbivorism = 0; 
+		carnivoreism = 0;
+		
+		sightRadius = 0;
+		damage = 0; 
+		speed = 0; 
+		healing = 0;
+	}
+	
+	
 	// Use this for initialization
 	void Start () {
 		curHealth = maxHealth;
