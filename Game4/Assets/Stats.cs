@@ -10,7 +10,7 @@ public class Stats : MonoBehaviour {
 	public float fedness = 50; //The amount of energy the cell possesses. 
 	public float metabolism = 2; //the amount of energy the cell uses per second.
 	public float maturation = 100;
-	public float repoductionEfficiency = 3;//lower is better. lower than 2 means the cells net gain energy when reproducing. below one will quickly crash the game. 
+	public float reproductionEfficiency = 3;//lower is better. lower than 2 means the cells net gain energy when reproducing. below one will quickly crash the game. 
 	
 	public float aggression = 0; //the odds of going after an enemy cell (per second perhaps?)
 	public float herbivorism = 0; //the odds of going after plants.
@@ -27,10 +27,10 @@ public class Stats : MonoBehaviour {
 		maxHealth = 0; //the amount of damage the cell can take. 
 		//curHealth; 
 		
-		fedness = 0; //The amount of energy the cell possesses. 
+		//fedness = 0; //The amount of energy the cell possesses. 
 		metabolism = 0; 
 		maturation = 0;
-		repoductionEfficiency = 0;
+		reproductionEfficiency = 0;
 		
 		aggression = 0; 
 		herbivorism = 0; 
@@ -46,6 +46,9 @@ public class Stats : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		curHealth = maxHealth;
+		if(fedness == 0){
+			fedness = maturation/3;		
+		}
 	}
 	
 	// Update is called once per frame
@@ -77,7 +80,7 @@ public class Stats : MonoBehaviour {
 	public void feed(float amount){
 		fedness += amount;
 		if(fedness >= maturation){
-			fedness/=repoductionEfficiency;
+			fedness/=reproductionEfficiency;
 			GameObject temp = GameObject.Instantiate(gameObject);
 		}
 	}

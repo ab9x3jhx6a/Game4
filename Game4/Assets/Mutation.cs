@@ -8,7 +8,7 @@ public class Mutation : MonoBehaviour {
 
 	public float metabolism = 0; //the amount of energy the cell uses per second.
 	public float maturation = 0;
-	public float repoductionEfficiency = 0;//lower is better. lower than 2 means the cells net gain energy when reproducing. below one will quickly crash the game. 
+	public float reproductionEfficiency = 0;//lower is better. lower than 2 means the cells net gain energy when reproducing. below one will quickly crash the game. 
 	
 	public float aggression = 0; //the odds of going after an enemy cell (per second perhaps?)
 	public float herbivorism = 0; //the odds of going after plants.
@@ -30,7 +30,7 @@ public class Mutation : MonoBehaviour {
 		stats.maxHealth += maxHealth;
 		stats.metabolism += metabolism;
 		stats.maturation += maturation;
-		stats.repoductionEfficiency += repoductionEfficiency;
+		stats.reproductionEfficiency += reproductionEfficiency;
 		stats.aggression += aggression;
 		stats.herbivorism += herbivorism;
 		stats.carnivoreism += carnivoreism;
