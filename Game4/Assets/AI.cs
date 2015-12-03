@@ -26,6 +26,9 @@ public class AI : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter(Collision other){
+		if(!enabled){
+			return;
+		}
 		if(other.gameObject.CompareTag("Wall")){
 			resetAction();
 			return;
@@ -34,10 +37,33 @@ public class AI : MonoBehaviour {
 			target = null;
 			resetAction();
 		}
+		
+		Stats temp = other.gameObject.GetComponent<Stats>();
+		if(temp && (temp.herbivorism != stats.herbivorism || temp.carnivoreism != stats.carnivoreism)){
+			temp.takeDamage(stats.damage);
+		}
+		
 		if(stats.herbivorism > 0){
+			FoodPlant food = other.gameObject.GetComponent<FoodPlant>();
+			if(!food){
+				return;
+			}
+			stats.feed(food.amount);
+			Destroy(food.gameObject);
+		}else if(stats.carnivoreism > 0){
+			FoodAnimal food = other.gameObject.GetComponent<FoodAnimal>();
+			if(!food){
+				return;
+			}
+			stats.feed(food.amount);
+			Destroy(food.gameObject);
+		}
+		/*
+		if(stats.herbivorism > 0){
+		
 			if(other.gameObject.GetComponent<Chloroplast>()){
-				stats.feed(other.gameObject.GetComponent<Stats>().fedness);
-				Destroy(other.gameObject);
+				//stats.feed(other.gameObject.GetComponent<Stats>().fedness);
+				//Destroy(other.gameObject);
 			}
 		}
 		if(stats.carnivoreism > 0){
@@ -45,7 +71,7 @@ public class AI : MonoBehaviour {
 				stats.feed(other.gameObject.GetComponent<Stats>().fedness);
 				Destroy(other.gameObject);
 			}
-		}
+		}*/
 	}
 	void OnCollisionStay(Collision other){
 		if(other.gameObject.CompareTag("Wall")){
@@ -73,37 +99,46 @@ public class AI : MonoBehaviour {
 		//print (r.rotation.eulerAngles.y + (50 - Random.value * 100));
 		//r.rotation = Quaternion.FromToRotation(r.rotation.eulerAngles,new Vector3(0,r.rotation.eulerAngles.y + (50 - Random.value * 100),0));//Quaternion.LookRotation(randomFlatRotation());
 		if(stats.herbivorism > Random.value){
-			action = findFood;
+			action = findFood<FoodPlant,Chloroplast>;
 		}
 		if(stats.carnivoreism > Random.value){
-			action = findPrey;
+			action = findFood<FoodAnimal,FoodAnimal>;
 		}
 		if(stats.aggression > Random.value){
-			action = findEnemy;
+			if(stats.herbivorism > 0){
+				action = findEnemy<Carnivore>;
+			}else{
+				action = findEnemy<Herbivore>;
+			}
 		}
 		if(Vector3.Distance(transform.position,destination) < wanderDistance/50){
 			resetAction();
 		}
 	}
 	
-	void findFood(){
+	void findFood<Food,Prey>()where Food:MonoBehaviour where Prey:MonoBehaviour{
 		wander ();
-		target = scan<Chloroplast>();
+		target = scan<Food>();
+		
+		if(target != null){
+			action = persue;//TO PERSUE
+		}else{
+			target = scan<Prey>();
+			if(target != null){
+				action = persue;
+			}
+		}
+	}
+	
+	void findEnemy<Enemy>()where Enemy:MonoBehaviour{
+ 		wander ();
+		target = scan<Enemy>();
 		
 		if(target != null){
 			action = persue;//TO PERSUE
 		}
 	}
-	
-	void findEnemy(){
-		wander ();
-		target = scan<Carnivore>();
-		
-		if(target != null){
-			action = persue;//TO PERSUE
-		}
-	}
-	
+	/*
 	void findPrey(){
 		wander();
 		target = scan<Herbivore>();
@@ -111,7 +146,7 @@ public class AI : MonoBehaviour {
 		if(target != null){
 			action = persue;//TO PERSUE
 		}
-	}
+	}*/
 	
 	void persue(){
 		if(target == null || Vector3.Distance(transform.position,target.transform.position) > stats.sightRadius){

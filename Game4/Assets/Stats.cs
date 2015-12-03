@@ -21,7 +21,7 @@ public class Stats : MonoBehaviour {
 	public float speed = 1; //how fast this cell will move. 
 	public float healing = .3f;//how much health this cell gains per second
 
-	
+	public GameObject drops;
 	
 	void Awake(){
 		maxHealth = 0; //the amount of damage the cell can take. 
@@ -59,9 +59,20 @@ public class Stats : MonoBehaviour {
 		
 		fedness -= metabolism * Time.deltaTime;
 		if(fedness < 0){
-			Destroy(gameObject);
+			AI temp = GetComponent<AI>();
+			temp.enabled = false;
+			fedness = maturation/5;
+			enabled = false;
+
+			//Destroy(gameObject);
 		}
 		resetSize();
+	}
+	
+	
+	
+	public void OnDestroy(){
+			
 	}
 	
 	void resetSize(){
@@ -73,7 +84,12 @@ public class Stats : MonoBehaviour {
 	public void takeDamage(float damage){
 		curHealth -= damage;
 		if(curHealth <= 0){
-			Destroy(this);
+			while(fedness > 0){
+				fedness -= 10;
+				GameObject temp = GameObject.Instantiate(drops);
+				temp.transform.position = transform.position;
+			}
+			Destroy(this.gameObject);
 		}
 	}
 	
@@ -84,4 +100,6 @@ public class Stats : MonoBehaviour {
 			GameObject temp = GameObject.Instantiate(gameObject);
 		}
 	}
+	
+	
 }
