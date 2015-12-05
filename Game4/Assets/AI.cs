@@ -58,11 +58,6 @@ public class AI : MonoBehaviour {
 	void wander(){
 		r.AddRelativeForce(0,0,stats.speed);
 		r.rotation = Quaternion.LookRotation(towards(transform.position,destination));
-		//print("before: " + r.rotation.eulerAngles);
-		//r.rotation.eulerAngles.Set(0,r.rotation.eulerAngles.y + 5 - Random.value * 10,0);
-		//print ("after " + r.rotation.eulerAngles);
-		//print (r.rotation.eulerAngles.y + (50 - Random.value * 100));
-		//r.rotation = Quaternion.FromToRotation(r.rotation.eulerAngles,new Vector3(0,r.rotation.eulerAngles.y + (50 - Random.value * 100),0));//Quaternion.LookRotation(randomFlatRotation());
 		if(stats.herbivorism > Random.value){
 			action = findFood<FoodPlant,Chloroplast>;
 		}
