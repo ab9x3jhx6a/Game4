@@ -8,7 +8,7 @@ public class Carnivore : Mutation {
 		base.Start();
 	}*/
 	void OnCollisionEnter(Collision other){
-		if(!enabled){
+		if(!stats.enabled){
 			return;
 		}
 		

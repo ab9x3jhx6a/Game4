@@ -13,6 +13,6 @@ public class Chloroplast : Mutation {
 	*/
 	// Update is called once per frame
 	void Update () {
-		stats.feed(energyPerSecond * Time.deltaTime);
+		stats.feed((energyPerSecond- Random.value) * Time.deltaTime );
 	}
 }
