@@ -24,6 +24,7 @@ public class Stats : MonoBehaviour {
 	public Rigidbody rigidbody;
 
 	public GameObject drops;
+	public ParticleSystem blood;
 
 //	public Mutation[] mutations;
 	public int initializedMutations = 0;
@@ -93,7 +94,7 @@ public class Stats : MonoBehaviour {
 	}
 	
 	public void OnDestroy(){
-			
+		
 	}
 	
 	void resetSize(){
@@ -110,6 +111,8 @@ public class Stats : MonoBehaviour {
 				GameObject temp = GameObject.Instantiate(drops);
 				temp.transform.position = transform.position;
 			}
+			ParticleSystem temp2 = GameObject.Instantiate(blood);
+			temp2.transform.position = transform.position;
 			Destroy(this.gameObject);
 		}
 	}

@@ -1,10 +1,13 @@
 fileFormatVersion: 2
 guid: 50a04f03937738249b5699d8a8c891f3
-timeCreated: 1448220248
+timeCreated: 1449347547
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - rigidbody: {instanceID: 0}
+  - drops: {instanceID: 0}
+  - blood: {fileID: 19800268, guid: 203d18d0bfd6d7745b065c16596e2ac0, type: 2}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
