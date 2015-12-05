@@ -7,7 +7,7 @@ public class DealDamage : MonoBehaviour {
 	public float knockback = 50;
 
 
-
+/*
 	void OnCollisionEnter(Collision other){
 		Stats temp = other.gameObject.GetComponent<Stats>();
 		print ("collision detected.");
@@ -17,8 +17,7 @@ public class DealDamage : MonoBehaviour {
 			temp.takeDamage(damage);
 			temp.rigidbody.AddExplosionForce(knockback,transform.position,10);
 		}
-
-	}
+	}*/
 	// Use this for initialization
 /*	void Start () {
 	

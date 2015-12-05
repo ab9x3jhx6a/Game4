@@ -25,6 +25,9 @@ public class Stats : MonoBehaviour {
 
 	public GameObject drops;
 	public ParticleSystem blood;
+	public float decayTime = 30;
+	//public HealthLifeTime timer;
+
 
 //	public Mutation[] mutations;
 	public int initializedMutations = 0;
@@ -78,7 +81,8 @@ public class Stats : MonoBehaviour {
 			temp.enabled = false;
 			fedness = maturation/5;
 			enabled = false;
-
+			HealthLifeTime timer = gameObject.AddComponent<HealthLifeTime>();
+			timer.time = decayTime;
 			//Destroy(gameObject);
 		}
 		resetSize();
