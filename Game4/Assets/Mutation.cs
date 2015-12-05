@@ -38,7 +38,8 @@ public class Mutation : MonoBehaviour {
 		stats.damage += damage;
 		stats.speed += speed;
 		stats.healing += healing;
-
+		
+		stats.notifyInitialized(this);
 	}
 	
 	// Update is called once per frame

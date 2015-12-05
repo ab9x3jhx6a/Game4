@@ -37,41 +37,6 @@ public class AI : MonoBehaviour {
 			target = null;
 			resetAction();
 		}
-		
-		Stats temp = other.gameObject.GetComponent<Stats>();
-		if(temp && (temp.herbivorism != stats.herbivorism || temp.carnivoreism != stats.carnivoreism)){
-			temp.takeDamage(stats.damage);
-		}
-		
-		if(stats.herbivorism > 0){
-			FoodPlant food = other.gameObject.GetComponent<FoodPlant>();
-			if(!food){
-				return;
-			}
-			stats.feed(food.amount);
-			Destroy(food.gameObject);
-		}else if(stats.carnivoreism > 0){
-			FoodAnimal food = other.gameObject.GetComponent<FoodAnimal>();
-			if(!food){
-				return;
-			}
-			stats.feed(food.amount);
-			Destroy(food.gameObject);
-		}
-		/*
-		if(stats.herbivorism > 0){
-		
-			if(other.gameObject.GetComponent<Chloroplast>()){
-				//stats.feed(other.gameObject.GetComponent<Stats>().fedness);
-				//Destroy(other.gameObject);
-			}
-		}
-		if(stats.carnivoreism > 0){
-			if(other.gameObject.GetComponent<Herbivore>()){
-				stats.feed(other.gameObject.GetComponent<Stats>().fedness);
-				Destroy(other.gameObject);
-			}
-		}*/
 	}
 	void OnCollisionStay(Collision other){
 		if(other.gameObject.CompareTag("Wall")){
@@ -102,7 +67,7 @@ public class AI : MonoBehaviour {
 			action = findFood<FoodPlant,Chloroplast>;
 		}
 		if(stats.carnivoreism > Random.value){
-			action = findFood<FoodAnimal,FoodAnimal>;
+			action = findFood<FoodAnimal,Herbivore>;
 		}
 		if(stats.aggression > Random.value){
 			if(stats.herbivorism > 0){
@@ -151,6 +116,7 @@ public class AI : MonoBehaviour {
 	void persue(){
 		if(target == null || Vector3.Distance(transform.position,target.transform.position) > stats.sightRadius){
 			resetAction();//TO WANDER
+			return;
 		}
 		r.AddRelativeForce(0,0,stats.speed);
 		r.rotation = Quaternion.LookRotation(towards(transform.position,target.transform.position));

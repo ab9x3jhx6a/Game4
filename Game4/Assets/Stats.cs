@@ -5,7 +5,7 @@ public class Stats : MonoBehaviour {
 
 	//Here are some variables that will probably be used. 
 	public float maxHealth = 10; //the amount of damage the cell can take. 
-	float curHealth; 
+	public float curHealth; 
 	
 	public float fedness = 50; //The amount of energy the cell possesses. 
 	public float metabolism = 2; //the amount of energy the cell uses per second.
@@ -21,8 +21,14 @@ public class Stats : MonoBehaviour {
 	public float speed = 1; //how fast this cell will move. 
 	public float healing = .3f;//how much health this cell gains per second
 
+	public Rigidbody rigidbody;
+
 	public GameObject drops;
-	
+
+//	public Mutation[] mutations;
+	public int initializedMutations = 0;
+	public int totalMutations = 0;
+			
 	void Awake(){
 		maxHealth = 0; //the amount of damage the cell can take. 
 		//curHealth; 
@@ -40,21 +46,29 @@ public class Stats : MonoBehaviour {
 		damage = 0; 
 		speed = 0; 
 		healing = 0;
+		
+		initializedMutations = 0;
+		totalMutations = 0;
 	}
 	
 	
 	// Use this for initialization
 	void Start () {
-		curHealth = maxHealth;
-		if(fedness == 0){
+		//curHealth = maxHealth;
+		/*if(fedness == 0){
 			fedness = maturation/3;		
+		}*/
+		rigidbody = GetComponent<Rigidbody>();
+		totalMutations = GetComponents<Mutation>().Length;
+		if(initializedMutations == totalMutations){
+			curHealth = maxHealth;
 		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if(curHealth < maxHealth){
-			curHealth+= healing;
+			curHealth+= healing*Time.deltaTime;
 		}
 		
 		fedness -= metabolism * Time.deltaTime;
@@ -70,6 +84,13 @@ public class Stats : MonoBehaviour {
 	}
 	
 	
+	public void notifyInitialized(Mutation mutation){
+		//mutations[initializedMutations++] = mutation;
+		initializedMutations++;
+		if(initializedMutations==totalMutations){
+			curHealth = maxHealth;
+		}
+	}
 	
 	public void OnDestroy(){
 			
@@ -100,6 +121,4 @@ public class Stats : MonoBehaviour {
 			GameObject temp = GameObject.Instantiate(gameObject);
 		}
 	}
-	
-	
 }

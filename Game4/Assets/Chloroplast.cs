@@ -6,11 +6,11 @@ public class Chloroplast : Mutation {
 	public float energyPerSecond = 5;
 	
 	// Use this for initialization
-	void Start () {
+/*	void Start () {
 		base.Start();
 		print("starting");
 	}
-	
+	*/
 	// Update is called once per frame
 	void Update () {
 		stats.feed(energyPerSecond * Time.deltaTime);
