@@ -27,12 +27,14 @@ public class Stats : MonoBehaviour {
 	public ParticleSystem blood;
 	public float decayTime = 30;
 	//public HealthLifeTime timer;
-
+	public string immunity = "";
 
 //	public Mutation[] mutations;
 	public int initializedMutations = 0;
 	public int totalMutations = 0;
-			
+	
+	
+	
 	void Awake(){
 		maxHealth = 0; //the amount of damage the cell can take. 
 		//curHealth; 
@@ -109,14 +111,18 @@ public class Stats : MonoBehaviour {
 	
 	public void takeDamage(float damage){
 		curHealth -= damage;
+		SendMessage("hit",null,SendMessageOptions.DontRequireReceiver);
 		if(curHealth <= 0){
 			while(fedness > 0){
 				fedness -= 10;
 				GameObject temp = GameObject.Instantiate(drops);
 				temp.transform.position = transform.position;
+				Vector2 position = Random.insideUnitCircle;
+				temp.transform.Translate(position.x,0,position.y);
 			}
 			ParticleSystem temp2 = GameObject.Instantiate(blood);
 			temp2.transform.position = transform.position;
+			SendMessage("preDestroy",null,SendMessageOptions.DontRequireReceiver);
 			Destroy(this.gameObject);
 		}
 	}
@@ -126,6 +132,8 @@ public class Stats : MonoBehaviour {
 		if(fedness >= maturation){
 			fedness/=reproductionEfficiency;
 			GameObject temp = GameObject.Instantiate(gameObject);
+			Vector2 position = Random.insideUnitCircle;
+			temp.transform.Translate(position.x,0,position.y);
 		}
 	}
 }
