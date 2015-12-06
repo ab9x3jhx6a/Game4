@@ -1,89 +1,25 @@
 fileFormatVersion: 2
-guid: 8431e2761bc64df4daf78d1bd821ba80
-timeCreated: 1449351672
+guid: 90664f6dc99915d4e944648fdd500ce6
+timeCreated: 1449439068
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
     100002: Cell_Wall
-    100004: Main_Body
-    100006: pSphere1
-    100008: pSphere10
-    100010: pSphere11
-    100012: pSphere12
-    100014: pSphere13
-    100016: pSphere2
-    100018: pSphere3
-    100020: pSphere4
-    100022: pSphere5
-    100024: pSphere6
-    100026: pSphere7
-    100028: pSphere8
-    100030: pSphere9
-    100032: Ribosomes
+    100004: Main
+    100006: Main_Body
     400000: //RootNode
     400002: Cell_Wall
-    400004: Main_Body
-    400006: pSphere1
-    400008: pSphere10
-    400010: pSphere11
-    400012: pSphere12
-    400014: pSphere13
-    400016: pSphere2
-    400018: pSphere3
-    400020: pSphere4
-    400022: pSphere5
-    400024: pSphere6
-    400026: pSphere7
-    400028: pSphere8
-    400030: pSphere9
-    400032: Ribosomes
+    400004: Main
+    400006: Main_Body
     2300000: Cell_Wall
     2300002: Main_Body
-    2300004: pSphere1
-    2300006: pSphere10
-    2300008: pSphere11
-    2300010: pSphere12
-    2300012: pSphere13
-    2300014: pSphere2
-    2300016: pSphere3
-    2300018: pSphere4
-    2300020: pSphere5
-    2300022: pSphere6
-    2300024: pSphere7
-    2300026: pSphere8
-    2300028: pSphere9
     3300000: Cell_Wall
     3300002: Main_Body
-    3300004: pSphere1
-    3300006: pSphere10
-    3300008: pSphere11
-    3300010: pSphere12
-    3300012: pSphere13
-    3300014: pSphere2
-    3300016: pSphere3
-    3300018: pSphere4
-    3300020: pSphere5
-    3300022: pSphere6
-    3300024: pSphere7
-    3300026: pSphere8
-    3300028: pSphere9
     4300000: Cell_Wall
     4300002: Main_Body
-    4300004: pSphere1
-    4300006: pSphere2
-    4300008: pSphere3
-    4300010: pSphere4
-    4300012: pSphere5
-    4300014: pSphere6
-    4300016: pSphere7
-    4300018: pSphere8
-    4300020: pSphere9
-    4300022: pSphere10
-    4300024: pSphere11
-    4300026: pSphere12
-    4300028: pSphere13
+    9500000: //RootNode
   materials:
     importMaterials: 1
     materialName: 0
@@ -110,7 +46,7 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importBlendShapes: 1
+    importBlendShapes: 0
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -142,7 +78,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
