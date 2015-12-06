@@ -1,9 +1,11 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
 public class Mutation : MonoBehaviour {
+	public string mutationName = ""; //name of this mutation (can be set publically or within inherited component)
 	public GameObject MutationObject = null; //Preset visual object for this mutation
-	GameObject MutationInstance = null; //instance of the mutation (will be parented to the bacteria)
+	protected GameObject MutationInstance = null; //instance of the mutation (will be parented to the bacteria)
 	public float maxHealth = 0; //the amount of damage the cell can take. 
 
 	public float metabolism = 0; //the amount of energy the cell uses per second.
@@ -13,7 +15,7 @@ public class Mutation : MonoBehaviour {
 	public float aggression = 0; //the odds of going after an enemy cell (per second perhaps?)
 	public float herbivorism = 0; //the odds of going after plants.
 	public float carnivoreism = 0;
-	
+
 	public float sightRadius = 0;
 	public float damage = 0; //how much damage this cell will do when attacking. 
 	public float speed = 0; //how fast this cell will move. 
@@ -21,10 +23,14 @@ public class Mutation : MonoBehaviour {
 	public Stats stats;
 
 	protected void Start () {
-		stats = this.GetComponent<Stats> ();
+		Debug.Log (this.name);
+		stats = this.gameObject.GetComponent<Stats> ();
 		MutationInstance = null;
 		if (MutationObject != null) {
-			MutationInstance = (GameObject)Instantiate (MutationObject);
+			MutationInstance =(GameObject)Instantiate (MutationObject);
+			print ("instantiating " + MutationInstance);
+			MutationInstance.transform.position = new Vector3(transform.position.x + MutationInstance.transform.position.x,transform.position.y + MutationInstance.transform.position.y,transform.position.z + MutationInstance.transform.position.z);
+			MutationInstance.transform.SetParent(this.gameObject.transform); //attaches the new mutation to its owner
 		}
 		//all set changes for mutations from public input are made onto the cell's stats
 		stats.maxHealth += maxHealth;
@@ -38,7 +44,7 @@ public class Mutation : MonoBehaviour {
 		stats.damage += damage;
 		stats.speed += speed;
 		stats.healing += healing;
-
+		stats.notifyInitialized(this);
 	}
 	
 	// Update is called once per frame

@@ -26,6 +26,9 @@ public class AI : MonoBehaviour {
 	}
 	
 	void OnCollisionEnter(Collision other){
+		if(!enabled){
+			return;
+		}
 		if(other.gameObject.CompareTag("Wall")){
 			resetAction();
 			return;
@@ -33,18 +36,6 @@ public class AI : MonoBehaviour {
 		if(target == other.gameObject){
 			target = null;
 			resetAction();
-		}
-		if(stats.herbivorism > 0){
-			if(other.gameObject.GetComponent<Chloroplast>()){
-				stats.feed(other.gameObject.GetComponent<Stats>().fedness);
-				Destroy(other.gameObject);
-			}
-		}
-		if(stats.carnivoreism > 0){
-			if(other.gameObject.GetComponent<Herbivore>()){
-				stats.feed(other.gameObject.GetComponent<Stats>().fedness);
-				Destroy(other.gameObject);
-			}
 		}
 	}
 	void OnCollisionStay(Collision other){
@@ -67,43 +58,47 @@ public class AI : MonoBehaviour {
 	void wander(){
 		r.AddRelativeForce(0,0,stats.speed);
 		r.rotation = Quaternion.LookRotation(towards(transform.position,destination));
-		//print("before: " + r.rotation.eulerAngles);
-		//r.rotation.eulerAngles.Set(0,r.rotation.eulerAngles.y + 5 - Random.value * 10,0);
-		//print ("after " + r.rotation.eulerAngles);
-		//print (r.rotation.eulerAngles.y + (50 - Random.value * 100));
-		//r.rotation = Quaternion.FromToRotation(r.rotation.eulerAngles,new Vector3(0,r.rotation.eulerAngles.y + (50 - Random.value * 100),0));//Quaternion.LookRotation(randomFlatRotation());
 		if(stats.herbivorism > Random.value){
-			action = findFood;
+			action = findFood<FoodPlant,Chloroplast>;
 		}
 		if(stats.carnivoreism > Random.value){
-			action = findPrey;
+			action = findFood<FoodAnimal,Herbivore>;
 		}
 		if(stats.aggression > Random.value){
-			action = findEnemy;
+			if(stats.herbivorism > 0){
+				action = findEnemy<Carnivore>;
+			}else{
+				action = findEnemy<Herbivore>;
+			}
 		}
 		if(Vector3.Distance(transform.position,destination) < wanderDistance/50){
 			resetAction();
 		}
 	}
 	
-	void findFood(){
+	void findFood<Food,Prey>()where Food:MonoBehaviour where Prey:MonoBehaviour{
 		wander ();
-		target = scan<Chloroplast>();
+		target = scan<Food>();
+		
+		if(target != null){
+			action = persue;//TO PERSUE
+		}else{
+			target = scan<Prey>();
+			if(target != null){
+				action = persue;
+			}
+		}
+	}
+	
+	void findEnemy<Enemy>()where Enemy:MonoBehaviour{
+ 		wander ();
+		target = scan<Enemy>();
 		
 		if(target != null){
 			action = persue;//TO PERSUE
 		}
 	}
-	
-	void findEnemy(){
-		wander ();
-		target = scan<Carnivore>();
-		
-		if(target != null){
-			action = persue;//TO PERSUE
-		}
-	}
-	
+	/*
 	void findPrey(){
 		wander();
 		target = scan<Herbivore>();
@@ -111,11 +106,12 @@ public class AI : MonoBehaviour {
 		if(target != null){
 			action = persue;//TO PERSUE
 		}
-	}
+	}*/
 	
 	void persue(){
 		if(target == null || Vector3.Distance(transform.position,target.transform.position) > stats.sightRadius){
 			resetAction();//TO WANDER
+			return;
 		}
 		r.AddRelativeForce(0,0,stats.speed);
 		r.rotation = Quaternion.LookRotation(towards(transform.position,target.transform.position));
