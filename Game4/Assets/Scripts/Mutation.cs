@@ -23,7 +23,6 @@ public class Mutation : MonoBehaviour {
 	public Stats stats;
 
 	protected void Start () {
-		Debug.Log (this.name);
 		if (mutationName != "" && this.gameObject.GetComponent<Mutations>() != null) { //If you levae a mutationName empty it will not account for it, so use this if you want non-tranferable mutations
 			this.gameObject.GetComponent<Mutations>().mutations.Add(mutationName); //adds mutation to this bacteria's current list of mutations
 			List<string> wedge;
@@ -32,9 +31,11 @@ public class Mutation : MonoBehaviour {
 		MutationInstance = null;
 		if (MutationObject != null) {
 			MutationInstance =(GameObject)Instantiate (MutationObject);
-			print ("instantiating " + MutationInstance);
+			Vector3 ang = transform.eulerAngles; //holds current rotation for simple no-math solution
+			transform.eulerAngles = Vector3.zero;
 			MutationInstance.transform.position = new Vector3(transform.position.x + MutationInstance.transform.position.x,transform.position.y + MutationInstance.transform.position.y,transform.position.z + MutationInstance.transform.position.z);
 			MutationInstance.transform.SetParent(this.gameObject.transform); //attaches the new mutation to its owner
+			transform.eulerAngles = ang;
 		}
 		//all set changes for mutations from public input are made onto the cell's stats
 		stats.maxHealth += maxHealth;
