@@ -32,14 +32,15 @@ public class AI : MonoBehaviour {
 		if(other.gameObject.CompareTag("Wall")){
 			resetAction();
 			return;
-		}
+		}/*
 		if(target == other.gameObject){
 			target = null;
 			resetAction();
-		}
+		}*/
 	}
 	void OnCollisionStay(Collision other){
 		if(other.gameObject.CompareTag("Wall")){
+			print ("hitting wall ._.");
 			resetAction();
 			return;
 		}
@@ -56,8 +57,8 @@ public class AI : MonoBehaviour {
 	}
 	
 	void wander(){
+		transform.rotation = Quaternion.LookRotation(towards(transform.position,destination));
 		r.AddRelativeForce(0,0,stats.speed);
-		r.rotation = Quaternion.LookRotation(towards(transform.position,destination));
 		if(stats.herbivorism > Random.value){
 			action = findFood<FoodPlant,Chloroplast>;
 		}
@@ -71,7 +72,7 @@ public class AI : MonoBehaviour {
 				action = findEnemy<Herbivore>;
 			}
 		}
-		if(Vector3.Distance(transform.position,destination) < wanderDistance/50){
+		if(Vector3.Distance(transform.position,destination) < wanderDistance/500){
 			resetAction();
 		}
 	}
@@ -149,7 +150,7 @@ public class AI : MonoBehaviour {
 		return false;
 	}
 	
-	static Vector3 towards(Vector3 origin, Vector3 destination){
+	public static Vector3 towards(Vector3 origin, Vector3 destination){
 		Vector3 temp = destination - origin;
 		temp.Normalize();
 		//print (temp);
