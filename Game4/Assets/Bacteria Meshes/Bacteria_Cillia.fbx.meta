@@ -1,25 +1,64 @@
 fileFormatVersion: 2
-guid: 90664f6dc99915d4e944648fdd500ce6
-timeCreated: 1449439068
+guid: ba145b6411181f94cabf335565d06967
+timeCreated: 1449465069
 licenseType: Free
 ModelImporter:
   serializedVersion: 18
   fileIDToRecycleName:
     100000: //RootNode
-    100002: Cell_Wall
-    100004: Main
-    100006: Main_Body
+    100002: Cillia_of_Doom_Acq_Radius
+    100004: pCone10
+    100006: pCone11
+    100008: pCone2
+    100010: pCone3
+    100012: pCone4
+    100014: pCone5
+    100016: pCone6
+    100018: pCone7
+    100020: pCone8
+    100022: pCone9
     400000: //RootNode
-    400002: Cell_Wall
-    400004: Main
-    400006: Main_Body
-    2300000: Cell_Wall
-    2300002: Main_Body
-    3300000: Cell_Wall
-    3300002: Main_Body
-    4300000: Cell_Wall
-    4300002: Main_Body
-    9500000: //RootNode
+    400002: Cillia_of_Doom_Acq_Radius
+    400004: pCone10
+    400006: pCone11
+    400008: pCone2
+    400010: pCone3
+    400012: pCone4
+    400014: pCone5
+    400016: pCone6
+    400018: pCone7
+    400020: pCone8
+    400022: pCone9
+    2300000: pCone10
+    2300002: pCone11
+    2300004: pCone2
+    2300006: pCone3
+    2300008: pCone4
+    2300010: pCone5
+    2300012: pCone6
+    2300014: pCone7
+    2300016: pCone8
+    2300018: pCone9
+    3300000: pCone10
+    3300002: pCone11
+    3300004: pCone2
+    3300006: pCone3
+    3300008: pCone4
+    3300010: pCone5
+    3300012: pCone6
+    3300014: pCone7
+    3300016: pCone8
+    3300018: pCone9
+    4300000: pCone2
+    4300002: pCone3
+    4300004: pCone4
+    4300006: pCone5
+    4300008: pCone6
+    4300010: pCone7
+    4300012: pCone8
+    4300014: pCone9
+    4300016: pCone10
+    4300018: pCone11
   materials:
     importMaterials: 1
     materialName: 0
@@ -46,7 +85,7 @@ ModelImporter:
     globalScale: 1
     meshCompression: 0
     addColliders: 0
-    importBlendShapes: 0
+    importBlendShapes: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -78,7 +117,7 @@ ModelImporter:
     rootMotionBoneName: 
     hasTranslationDoF: 0
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   additionalBone: 0
   userData: 
