@@ -105,8 +105,8 @@ public class Stats : MonoBehaviour {
 	
 	void resetSize(){
 		//run this whenever 'fedness' is changed.
-		float temp = Mathf.Sqrt(fedness);
-		transform.localScale.Set(temp,temp,temp);
+		float temp = Mathf.Sqrt(fedness)/5 + .2f;
+		transform.localScale = new Vector3(temp,temp,temp);
 	}
 	
 	public void takeDamage(float damage){

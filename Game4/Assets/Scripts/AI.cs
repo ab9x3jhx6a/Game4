@@ -135,7 +135,19 @@ public class AI : MonoBehaviour {
 	}
 	
 	
-	
+	public bool enemy(GameObject other){
+		Stats tstats = other.GetComponent<Stats>();
+		if(!tstats){
+			return false;
+		}
+		if(stats.carnivoreism != tstats.carnivoreism){
+			return true;
+		}
+		if(stats.herbivorism != tstats.herbivorism){
+			return true;
+		}
+		return false;
+	}
 	
 	static Vector3 towards(Vector3 origin, Vector3 destination){
 		Vector3 temp = destination - origin;

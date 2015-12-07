@@ -53,7 +53,10 @@ public class Mutation : MonoBehaviour {
 	}
 	
 	// Update is called once per frame
-	void Update () {
+	//If you decomment this update function, please tell me as it will not be called on certain mutations unless
+	// you make it protected and call it from subclasses that don't comment it out.
+/*	void Update () {
 	
 	}
+*/
 }
