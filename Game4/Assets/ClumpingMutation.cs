@@ -30,6 +30,7 @@ public class ClumpingMutation : Mutation {
 	public void unPack(){
 		Rigidbody temp = gameObject.AddComponent<Rigidbody>();
 		//Rigidbody temp2 = temp.GetComponent<Rigidbody>();
+		stats.rigidbody = temp;
 		temp.drag = 1;
 		temp.angularDrag = 1;
 		temp.useGravity = false;

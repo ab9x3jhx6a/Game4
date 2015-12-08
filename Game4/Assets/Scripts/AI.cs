@@ -48,7 +48,7 @@ public class AI : MonoBehaviour {
 	}
 	
 	void idle(){
-		print("running idle");
+//		print("running idle");
 	}
 	
 	void resetAction(){
@@ -60,9 +60,9 @@ public class AI : MonoBehaviour {
 	void wander(){
 		transform.rotation = Quaternion.LookRotation(towards(transform.position,destination));
 		r.AddRelativeForce(0,0,stats.speed);
-		print("running wander,");
+//		print("running wander,");
 		if(stats.herbivorism > Random.value){
-			print ("Finding food.");
+//			print ("Finding food.");
 			action = findFood<FoodPlant,Chloroplast>;
 		}
 		if(stats.carnivoreism > Random.value){
@@ -82,7 +82,7 @@ public class AI : MonoBehaviour {
 	}
 	
 	void findFood<Food,Prey>()where Food:MonoBehaviour where Prey:MonoBehaviour{
-		print("running food search,");
+//		print("running food search,");
 		wander ();
 		target = scan<Food>();
 		
@@ -97,7 +97,7 @@ public class AI : MonoBehaviour {
 	}
 	
 	void findEnemy<Enemy>()where Enemy:MonoBehaviour{
-		print("running aggression,");
+//		print("running aggression,");
  		wander ();
 		target = scan<Enemy>();
 		
@@ -116,7 +116,7 @@ public class AI : MonoBehaviour {
 	}*/
 	
 	void persue(){
-		print("running persue,");
+	//	print("running persue,");
 		if(target == null || Vector3.Distance(transform.position,target.transform.position) > stats.sightRadius){
 			resetAction();//TO WANDER
 			return;
@@ -135,7 +135,7 @@ public class AI : MonoBehaviour {
 				valids.Add(component);
 			}
 		}
-		print("detected " + valids.Count + " targets");
+//		print("detected " + valids.Count + " targets");
 		if(valids.Count < 1){
 			return null;
 		}else{

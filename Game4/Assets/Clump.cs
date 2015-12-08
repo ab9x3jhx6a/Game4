@@ -54,6 +54,8 @@ public class Clump : MonoBehaviour {
 		if(fedness <= 0){
 			for(int i = 0; i < children.Count; i++){
 				children[i].transform.parent = null;
+				children[i].GetComponent<ClumpingMutation>().unPack();
+				
 				//children[i].SendMessage("makeClump");
 			}
 			Destroy(gameObject);
@@ -64,7 +66,7 @@ public class Clump : MonoBehaviour {
 		if( timer <= 0){
 			timer = patience;
 			direction = newDir;	
-			print ("clump is changing direction.");
+//			print ("clump is changing direction.");
 		}
 	}
 	

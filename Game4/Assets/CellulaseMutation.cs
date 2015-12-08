@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SpikeMutation : Mutation {
-
+public class CellulaseMutation : Mutation {
+	
 	DealDamage spike;
 	
 	
@@ -12,16 +12,16 @@ public class SpikeMutation : Mutation {
 		//Stats temp = other.gameObject.GetComponent<Stats>();
 		//print ("collision detected.");
 		if(other.contacts[0].thisCollider.gameObject == MutationInstance){
-			/*Stats temp = other.gameObject.GetComponent<Stats>();
-		//	print ("collision detected.");
+			Stats temp = other.gameObject.GetComponent<Stats>();
+			//	print ("collision detected.");
 			if(temp){
 				
 				//print ("collision is a valid target!");
 				temp.takeDamage(spike.damage);
 				temp.rigidbody.AddExplosionForce(spike.knockback,spike.transform.position,10);
-			}else{*/
+			}else{
 				//Clump clump = other.gameObject.GetComponent<Clump>();
-				Stats temp = other.contacts[0].otherCollider.gameObject.GetComponent<Stats>();
+				temp = other.contacts[0].otherCollider.gameObject.GetComponent<Stats>();
 				if(temp){
 					if(stats.rigidbody){
 						stats.rigidbody.AddForce(0,0,spike.knockback);
@@ -30,20 +30,12 @@ public class SpikeMutation : Mutation {
 					//temp.gameObject.transform.parent.rigidbody.AddExplosionForce(spike.knockback,spike.transform.position,10);
 				}
 			}
-		//}
+		}
 	}
 	
 	void OnCollisionStay(Collision other){
 		//Unfortunately, child objects are not responsible for their own collisions. 
-		Stats temp = other.contacts[0].otherCollider.gameObject.GetComponent<Stats>();
-		if(temp){
-			if(stats.rigidbody){
-				stats.rigidbody.AddForce(0,0,spike.knockback);
-			}
-			temp.takeDamage(spike.damage);
-			//temp.gameObject.transform.parent.rigidbody.AddExplosionForce(spike.knockback,spike.transform.position,10);
-		}
-	/*
+		
 		//Stats temp = other.gameObject.GetComponent<Stats>();
 		//print ("collision detected.");
 		if(other.contacts[0].thisCollider.gameObject == MutationInstance){
@@ -63,7 +55,7 @@ public class SpikeMutation : Mutation {
 					//temp.gameObject.transform.parent.rigidbody.AddExplosionForce(spike.knockback,spike.transform.position,10);
 				}
 			}
-		}*/
+		}
 	}
 	
 	// Use this for initialization

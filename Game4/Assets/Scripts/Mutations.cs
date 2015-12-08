@@ -97,7 +97,7 @@ public class Mutations : MonoBehaviour {
 	public void removeMutation() {
 		if (mutations.Count > 0) {
 			int randRoll = Random.Range (0,mutations.Count);
-			Mutation[] mutList = (Mutation[])(this.gameObject.GetComponents(typeof(Mutation))); 
+			Mutation[] mutList = (Mutation[])(this.gameObject.GetComponents<Mutation>()); //typeof(Mutation)
 			foreach (Mutation mut in mutList) {
 				if (mut.mutationName == mutations[randRoll]) {
 					mutations.Remove(mutations[randRoll]); //remove the mutation's name from its list of mutations
