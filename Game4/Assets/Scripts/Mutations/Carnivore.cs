@@ -12,12 +12,12 @@ public class Carnivore : Mutation {
 			return;
 		}
 		
-		
+		/*
 		Stats temp = other.gameObject.GetComponent<Stats>();
 		if(temp && (temp.herbivorism > 0)){
 			temp.takeDamage(stats.damage);
 			stats.rigidbody.AddRelativeForce(0,0,speed * -50);
-		}
+		}*/
 		
 		FoodAnimal food = other.gameObject.GetComponent<FoodAnimal>();
 		if(!food){
