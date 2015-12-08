@@ -22,6 +22,7 @@ public class AI : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		//print(action);
 		action();
 	}
 	
@@ -40,14 +41,14 @@ public class AI : MonoBehaviour {
 	}
 	void OnCollisionStay(Collision other){
 		if(other.gameObject.CompareTag("Wall")){
-			print ("hitting wall ._.");
+//			print ("hitting wall ._.");
 			resetAction();
 			return;
 		}
 	}
 	
 	void idle(){
-		
+		print("running idle");
 	}
 	
 	void resetAction(){
@@ -59,13 +60,16 @@ public class AI : MonoBehaviour {
 	void wander(){
 		transform.rotation = Quaternion.LookRotation(towards(transform.position,destination));
 		r.AddRelativeForce(0,0,stats.speed);
+		print("running wander,");
 		if(stats.herbivorism > Random.value){
+			print ("Finding food.");
 			action = findFood<FoodPlant,Chloroplast>;
 		}
 		if(stats.carnivoreism > Random.value){
 			action = findFood<FoodAnimal,Herbivore>;
 		}
 		if(stats.aggression > Random.value){
+//			print ("Being aggressive.");
 			if(stats.herbivorism > 0){
 				action = findEnemy<Carnivore>;
 			}else{
@@ -78,6 +82,7 @@ public class AI : MonoBehaviour {
 	}
 	
 	void findFood<Food,Prey>()where Food:MonoBehaviour where Prey:MonoBehaviour{
+		print("running food search,");
 		wander ();
 		target = scan<Food>();
 		
@@ -92,6 +97,7 @@ public class AI : MonoBehaviour {
 	}
 	
 	void findEnemy<Enemy>()where Enemy:MonoBehaviour{
+		print("running aggression,");
  		wander ();
 		target = scan<Enemy>();
 		
@@ -110,6 +116,7 @@ public class AI : MonoBehaviour {
 	}*/
 	
 	void persue(){
+		print("running persue,");
 		if(target == null || Vector3.Distance(transform.position,target.transform.position) > stats.sightRadius){
 			resetAction();//TO WANDER
 			return;
@@ -120,6 +127,7 @@ public class AI : MonoBehaviour {
 	
 	GameObject scan<T>() where T:MonoBehaviour{
 		Collider[] temp = Physics.OverlapSphere(transform.position,stats.sightRadius);
+		
 		List<T> valids = new List<T>();
 		for(int i = 0; i < temp.Length; i++){
 			T component = temp[i].GetComponent<T>();
@@ -127,6 +135,7 @@ public class AI : MonoBehaviour {
 				valids.Add(component);
 			}
 		}
+		print("detected " + valids.Count + " targets");
 		if(valids.Count < 1){
 			return null;
 		}else{

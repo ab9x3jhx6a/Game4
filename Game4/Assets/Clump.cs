@@ -11,6 +11,9 @@ public class Clump : MonoBehaviour {
 	
 	public Vector2 direction;
 	
+	public float patience = 5;
+	public float timer = 0;
+	
 	public float maxChildFedness = 30;
 	public float minChildFedness = 10;
 	Rigidbody r;
@@ -23,11 +26,17 @@ public class Clump : MonoBehaviour {
 	
 	void OnCollisionEnter(Collision other){
 		if(other.gameObject.CompareTag("Wall")){
-			Vector3 temp = AI.towards(transform.position,other.transform.position);
-			direction = new Vector2(temp.x,temp.z) * -1;
+			print("clump hitting wall.");
+			direction = Random.insideUnitCircle.normalized;
+			/*Vector3 temp = AI.towards(transform.position,other.transform.position);
+			direction = new Vector2(temp.x,temp.z) * -1;*/
 		}
 	}
-	
+	void OnCollisionStay(Collision other){
+		if(other.gameObject.CompareTag("Wall")){
+			direction = Random.insideUnitCircle.normalized;
+		}
+	}
 	// Use this for initialization
 	void Start () {
 		direction = Random.insideUnitCircle.normalized;
@@ -39,6 +48,7 @@ public class Clump : MonoBehaviour {
 	void Update () {
 		Vector3 temp = new Vector3(direction.x,0,direction.y) * speed;
 		r.AddForce(temp);
+		timer -= Time.deltaTime;
 		if(fedness <= 0){
 			for(int i = 0; i < children.Count; i++){
 				children[i].transform.parent = null;
@@ -49,7 +59,11 @@ public class Clump : MonoBehaviour {
 	}
 	
 	void tryChangeDirection(Vector2 newDir){
-		direction = newDir;	
+		if( timer <= 0){
+			timer = patience;
+			direction = newDir;	
+			print ("clump is changing direction.");
+		}
 	}
 	
 	public void check(Stats childstats){
@@ -88,10 +102,10 @@ public class Clump : MonoBehaviour {
 	}
 	
 	public Vector3 placeNew(){
-		print("normal position of child: " + children[0].transform.position);
-		print ("local position of child: " + children[0].transform.localPosition);
+//		print("normal position of child: " + children[0].transform.position);
+//		print ("local position of child: " + children[0].transform.localPosition);
 		Vector3 temp = Random.onUnitSphere * children[Random.Range(0,children.Count)].transform.localPosition.magnitude;
-		print (temp);
+//		print (temp);
 		return new Vector3(temp.x + (Random.value - 2),0,temp.z + Random.value - 2);
 		//return new Vector3(0,0,0);
 	}
