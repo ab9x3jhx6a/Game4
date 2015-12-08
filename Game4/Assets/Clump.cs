@@ -42,7 +42,9 @@ public class Clump : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
-		globalObj = FindObjectOfType<Global>();
+		globalObj = GameObject.Find("Globals").GetComponent<Global>();
+		 //FindObjectOfType<Global>();
+		
 		globalObj.addClump(this);
 		direction = Random.insideUnitCircle.normalized;
 		

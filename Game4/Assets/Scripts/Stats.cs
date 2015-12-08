@@ -36,6 +36,7 @@ public class Stats : MonoBehaviour {
 	
 	
 	void Awake(){
+		immunity = "";
 		maxHealth = 0; //the amount of damage the cell can take. 
 		//curHealth; 
 		
