@@ -21,6 +21,7 @@ public class Clump : MonoBehaviour {
 	public float explosionForce = 2;
 	
 	public int maxSize = 20;
+	public Global globalObj;
 	
 	void Awake(){
 		children = new List<Stats>();
@@ -41,6 +42,8 @@ public class Clump : MonoBehaviour {
 	}
 	// Use this for initialization
 	void Start () {
+		globalObj = FindObjectOfType<Global>();
+		globalObj.addClump(this);
 		direction = Random.insideUnitCircle.normalized;
 		
 		r = GetComponent<Rigidbody>();
@@ -51,7 +54,7 @@ public class Clump : MonoBehaviour {
 		Vector3 temp = new Vector3(direction.x,0,direction.y) * speed;
 		r.AddForce(temp);
 		timer -= Time.deltaTime;
-		if(fedness <= 0){
+		if(fedness <= 0 && globalObj.canSpawn()){
 			for(int i = 0; i < children.Count; i++){
 				children[i].transform.parent = null;
 				children[i].GetComponent<ClumpingMutation>().unPack();
@@ -60,6 +63,10 @@ public class Clump : MonoBehaviour {
 			}
 			Destroy(gameObject);
 		}
+	}
+	
+	void OnDestroy(){
+		globalObj.removeClump(this);
 	}
 	
 	void tryChangeDirection(Vector2 newDir){
@@ -75,7 +82,7 @@ public class Clump : MonoBehaviour {
 			Vector2 tempdir = new Vector2(childstats.transform.position.x,childstats.transform.position.z).normalized * -1;
 			tryChangeDirection(tempdir);
 		}
-		if(childstats.fedness < minChildFedness){
+		if(childstats.fedness < minChildFedness && fedness > 0){
 			float temp = minChildFedness - childstats.fedness;
 			fedness -= temp;
 			childstats.feed(temp);
