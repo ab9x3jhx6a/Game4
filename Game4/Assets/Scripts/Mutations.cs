@@ -87,7 +87,8 @@ public class Mutations : MonoBehaviour {
 			Debug.Log (newMutName);
 			List<Mutation> mutationGlobals = globalref.mutationComponents; //gets the list of all mutations to name check
 			for (int i = 0; i < mutationGlobals.Count; i++) {
-				if (mutationGlobals [i].mutationName == newMutName) {
+				if (mutationGlobals [i].mutationName == newMutName) { 
+					mutations.Add (newMutName);
 					this.CopyComponent (mutationGlobals [i], this.gameObject);
 				}
 			}
