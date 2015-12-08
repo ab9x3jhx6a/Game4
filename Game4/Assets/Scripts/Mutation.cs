@@ -5,7 +5,7 @@ using System.Collections.Generic;
 public class Mutation : MonoBehaviour {
 	public string mutationName = ""; //name of this mutation (can be set publically or within inherited component)
 	public GameObject MutationObject = null; //Preset visual object for this mutation
-	protected GameObject MutationInstance = null; //instance of the mutation (will be parented to the bacteria)
+	public GameObject MutationInstance = null; //instance of the mutation (will be parented to the bacteria)
 	public float maxHealth = 0; //the amount of damage the cell can take. 
 
 	public float metabolism = 0; //the amount of energy the cell uses per second.
@@ -32,10 +32,13 @@ public class Mutation : MonoBehaviour {
 		if (MutationObject != null) {
 			MutationInstance =(GameObject)Instantiate (MutationObject);
 			Vector3 ang = transform.eulerAngles; //holds current rotation for simple no-math solution
+			Vector3 scale = transform.localScale;
+			transform.localScale = Vector3.one;
 			transform.eulerAngles = Vector3.zero;
 			MutationInstance.transform.position = new Vector3(transform.position.x + MutationInstance.transform.position.x,transform.position.y + MutationInstance.transform.position.y,transform.position.z + MutationInstance.transform.position.z);
 			MutationInstance.transform.SetParent(this.gameObject.transform); //attaches the new mutation to its owner
 			transform.eulerAngles = ang;
+			transform.localScale = scale;
 		}
 		//all set changes for mutations from public input are made onto the cell's stats
 		stats.maxHealth += maxHealth;
