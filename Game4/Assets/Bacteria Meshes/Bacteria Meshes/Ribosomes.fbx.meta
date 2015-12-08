@@ -1,0 +1,132 @@
+fileFormatVersion: 2
+guid: 8a6b2003d34eed64a954d61bcc0c30bf
+timeCreated: 1449539715
+licenseType: Free
+ModelImporter:
+  serializedVersion: 18
+  fileIDToRecycleName:
+    100000: pSphere1
+    100002: pSphere10
+    100004: pSphere11
+    100006: pSphere12
+    100008: pSphere13
+    100010: pSphere2
+    100012: pSphere3
+    100014: pSphere4
+    100016: pSphere5
+    100018: pSphere6
+    100020: pSphere7
+    100022: pSphere8
+    100024: pSphere9
+    100026: //RootNode
+    100028: Ribosomes
+    100030: Ribosomes_Growth_Component
+    100032: transform1
+    100034: transform10
+    100036: transform11
+    100038: transform12
+    100040: transform13
+    100042: transform2
+    100044: transform3
+    100046: transform4
+    100048: transform5
+    100050: transform6
+    100052: transform7
+    100054: transform8
+    100056: transform9
+    400000: pSphere1
+    400002: pSphere10
+    400004: pSphere11
+    400006: pSphere12
+    400008: pSphere13
+    400010: pSphere2
+    400012: pSphere3
+    400014: pSphere4
+    400016: pSphere5
+    400018: pSphere6
+    400020: pSphere7
+    400022: pSphere8
+    400024: pSphere9
+    400026: //RootNode
+    400028: Ribosomes
+    400030: Ribosomes_Growth_Component
+    400032: transform1
+    400034: transform10
+    400036: transform11
+    400038: transform12
+    400040: transform13
+    400042: transform2
+    400044: transform3
+    400046: transform4
+    400048: transform5
+    400050: transform6
+    400052: transform7
+    400054: transform8
+    400056: transform9
+    2300000: Ribosomes
+    3300000: Ribosomes
+    4300000: Ribosomes
+  materials:
+    importMaterials: 1
+    materialName: 0
+    materialSearch: 1
+  animations:
+    legacyGenerateAnimations: 4
+    bakeSimulation: 0
+    optimizeGameObjects: 0
+    motionNodeName: 
+    animationImportErrors: 
+    animationImportWarnings: 
+    animationRetargetingWarnings: 
+    animationDoRetargetingWarnings: 0
+    animationCompression: 1
+    animationRotationError: .5
+    animationPositionError: .5
+    animationScaleError: .5
+    animationWrapMode: 0
+    extraExposedTransformPaths: []
+    clipAnimations: []
+    isReadable: 1
+  meshes:
+    lODScreenPercentages: []
+    globalScale: 1
+    meshCompression: 0
+    addColliders: 0
+    importBlendShapes: 1
+    swapUVChannels: 0
+    generateSecondaryUV: 0
+    useFileUnits: 1
+    optimizeMeshForGPU: 1
+    keepQuads: 0
+    weldVertices: 1
+    secondaryUVAngleDistortion: 8
+    secondaryUVAreaDistortion: 15.000001
+    secondaryUVHardAngle: 88
+    secondaryUVPackMargin: 4
+    useFileScale: 1
+  tangentSpace:
+    normalSmoothAngle: 60
+    splitTangentsAcrossUV: 1
+    normalImportMode: 0
+    tangentImportMode: 1
+  importAnimation: 1
+  copyAvatar: 0
+  humanDescription:
+    human: []
+    skeleton: []
+    armTwist: .5
+    foreArmTwist: .5
+    upperLegTwist: .5
+    legTwist: .5
+    armStretch: .0500000007
+    legStretch: .0500000007
+    feetSpacing: 0
+    rootMotionBoneName: 
+    hasTranslationDoF: 0
+  lastHumanDescriptionAvatarSource: {instanceID: 0}
+  animationType: 0
+  humanoidOversampling: 1
+  additionalBone: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
