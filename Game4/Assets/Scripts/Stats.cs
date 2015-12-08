@@ -85,9 +85,12 @@ public class Stats : MonoBehaviour {
 			enabled = false;
 			HealthLifeTime timer = gameObject.AddComponent<HealthLifeTime>();
 			timer.time = decayTime;
+			resetSize();
 			//Destroy(gameObject);
 		}
-		resetSize();
+		if(Random.value > .8f){
+			resetSize();
+		}
 	}
 	
 	
@@ -105,8 +108,10 @@ public class Stats : MonoBehaviour {
 	
 	void resetSize(){
 		//run this whenever 'fedness' is changed.
-		float temp = Mathf.Sqrt(fedness)/5 + .2f;
-		transform.localScale = new Vector3(temp,temp,temp);
+		//if(Random.value > .8f){
+			float temp = Mathf.Sqrt(fedness)/5 + .2f;
+			transform.localScale = new Vector3(temp,temp,temp);
+	//	}
 	}
 	
 	public void takeDamage(float damage){
@@ -132,7 +137,7 @@ public class Stats : MonoBehaviour {
 		if(fedness >= maturation){
 			fedness/=reproductionEfficiency;
 			GameObject temp = GameObject.Instantiate(gameObject);
-			Vector2 position = Random.insideUnitCircle;
+			Vector2 position = Random.insideUnitCircle * transform.localScale.x * 2;
 			temp.transform.Translate(position.x,0,position.y);
 		}
 	}

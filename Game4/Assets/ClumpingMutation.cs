@@ -41,6 +41,7 @@ public class ClumpingMutation : Mutation {
 		pack ();
 		parent = (Clump)GameObject.Instantiate(clump);
 		parent.transform.position = transform.position;
+		parent.speed = stats.speed;
 		transform.SetParent(parent.transform);
 		parent.add(stats);
 	}

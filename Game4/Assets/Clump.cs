@@ -20,6 +20,8 @@ public class Clump : MonoBehaviour {
 	
 	public float explosionForce = 2;
 	
+	public int maxSize = 20;
+	
 	void Awake(){
 		children = new List<Stats>();
 	}
@@ -76,7 +78,7 @@ public class Clump : MonoBehaviour {
 			fedness -= temp;
 			childstats.feed(temp);
 		}else if(childstats.fedness > maxChildFedness){
-			if(fedness > maturation){
+			if(fedness > maturation && maxSize >= children.Count){
 				float temp = childstats.maturation;
 				fedness -= temp;
 				childstats.feed(temp);
