@@ -24,6 +24,7 @@ public class ClumpingMutation : Mutation {
 	public void pack(){
 		
 		GameObject.Destroy(stats.rigidbody);
+		stats.rigidbody = clump.GetComponent<Rigidbody>();
 		GetComponent<AI>().enabled = false;
 	}
 	
