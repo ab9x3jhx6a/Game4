@@ -67,7 +67,7 @@ public class Inspector : MonoBehaviour {
             Ray ray = camera.ScreenPointToRay(Input.mousePosition);
             if (Physics.Raycast(ray, out hit))
             {
-                GameObject objectHit = hit.transform.gameObject;
+                GameObject objectHit = hit.collider.gameObject;//transform.gameObject;
                 Stats objectHitStats = objectHit.GetComponent<Stats>();
                 Mutations objectHitMutations = objectHit.GetComponent<Mutations>();
                 if (!objectHitStats)

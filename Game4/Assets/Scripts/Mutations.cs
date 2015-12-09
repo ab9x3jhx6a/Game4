@@ -42,7 +42,7 @@ public class Mutations : MonoBehaviour {
 		} 
 		else {
 			Component[] mutationComps = this.gameObject.GetComponents (typeof(Mutation)); //gets the list of all mutations to name check
-			Debug.Log ("mutationComps Length: " + mutationComps.Length);
+//			Debug.Log ("mutationComps Length: " + mutationComps.Length);
 			for (int i = 0; i < mutationComps.Length; i++) {
 				mutationComponents.Add(((Mutation)mutationComps[i]));
 				if (((Mutation)mutationComps[i]).mutationName != "") {
@@ -81,11 +81,11 @@ public class Mutations : MonoBehaviour {
 	public void addMutation() {
 		Mutations globalref = GameObject.Find ("Globals").GetComponent<Mutations> ();
 		List<string> NewMutations = differenceList (globalref.mutations, mutations); //finds which mutations this bacteria doesn't have
-		Debug.Log ("Mutation Size: " + NewMutations.Count);
+//		Debug.Log ("Mutation Size: " + NewMutations.Count);
 		int num = Random.Range (0, NewMutations.Count); //rolls a random mutation within the range of ones you don't have
 		if (NewMutations.Count > 0) {
 			string newMutName = NewMutations [num];
-			Debug.Log (newMutName);
+//			Debug.Log (newMutName);
 			List<Mutation> mutationGlobals = globalref.mutationComponents; //gets the list of all mutations to name check
 			for (int i = 0; i < mutationGlobals.Count; i++) {
 				if (mutationGlobals [i].mutationName == newMutName) { 

@@ -45,7 +45,9 @@ public class Move : MonoBehaviour {
 					location.y = 0;
 					location.z = hit.point.z;
 //					GameObject objectHit = hit.transform.gameObject;
-					target.transform.position = location;
+					if(target){
+						target.transform.position = location;
+					}
 					break;
 				}
 			}

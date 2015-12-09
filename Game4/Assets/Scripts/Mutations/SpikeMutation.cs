@@ -53,7 +53,7 @@ public class SpikeMutation : Mutation {
 			Stats temp = other.gameObject.GetComponent<Stats>();
 			//	print ("collision detected.");
 			if(temp && !temp.gameObject.CompareTag(gameObject.tag)){
-				print("collider: " + temp.gameObject.tag + " collidee " + gameObject.tag);
+//				print("collider: " + temp.gameObject.tag + " collidee " + gameObject.tag);
 				//print ("collision is a valid target!");
 				temp.takeDamage(spike.damage);
 				temp.rigidbody.AddExplosionForce(spike.knockback,spike.transform.position,10);

@@ -11,7 +11,7 @@ public class GameTime : MonoBehaviour {
     Text shownTime;
     private string finalTextMinutes;
     private string finalTextSeconds;
-
+	//Global global
 	// Use this for initialization
 	void Start () {
         startTime = Time.time;
