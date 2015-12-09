@@ -24,7 +24,9 @@ public class Mutation : MonoBehaviour {
 
 	protected void Start () {
 		if (mutationName != "" && this.gameObject.GetComponent<Mutations>() != null) { //If you levae a mutationName empty it will not account for it, so use this if you want non-tranferable mutations
-			this.gameObject.GetComponent<Mutations>().mutations.Add(mutationName); //adds mutation to this bacteria's current list of mutations
+			if (!this.gameObject.GetComponent<Mutations>().mutations.Contains(mutationName)) {
+				this.gameObject.GetComponent<Mutations>().mutations.Add(mutationName); //adds mutation to this bacteria's current list of mutations
+			}
 			List<string> wedge;
 		}
 		stats = this.gameObject.GetComponent<Stats> ();

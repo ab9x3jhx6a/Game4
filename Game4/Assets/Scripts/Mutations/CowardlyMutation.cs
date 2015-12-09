@@ -31,6 +31,7 @@ public class CowardlyMutation : Mutation {
 	void Update () {
 		
 		if(running){
+			//if(stats.rigidbody){
 			stats.rigidbody.AddForce(0,0,stats.speed * speedMultiplier);
 			runningTimer += Time.deltaTime;
 			if(runningTimer > duration){

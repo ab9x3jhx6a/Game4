@@ -36,6 +36,7 @@ public class Stats : MonoBehaviour {
 	
 	
 	void Awake(){
+		immunity = "";
 		maxHealth = 0; //the amount of damage the cell can take. 
 		//curHealth; 
 		
@@ -110,6 +111,9 @@ public class Stats : MonoBehaviour {
 		//run this whenever 'fedness' is changed.
 		//if(Random.value > .8f){
 			float temp = Mathf.Sqrt(fedness)/5 + .2f;
+			if(float.IsNaN(temp)){
+				return;
+			}
 			transform.localScale = new Vector3(temp,temp,temp);
 	//	}
 	}
