@@ -13,10 +13,11 @@ public class Mutations : MonoBehaviour {
 				Destroy(t.gameObject);
 			}
 			int mutRoll = Random.Range (1,11); //rolls an int between 1-10, simulates 10% chance for each number
+			//int mutRoll = 2; //100% mutation rate
 			bool mutateBool = false; //whether or not to add a mutation
 			bool removeMutateBool = false; //whether or not to take away a mutation
 			if (radiation) {
-				if (mutRoll > 2 && mutRoll <= 5) {
+				if (mutRoll >= 3 && mutRoll <= 6) {
 					mutateBool = true;
 				}
 				else if (mutRoll <= 2) {
@@ -24,7 +25,7 @@ public class Mutations : MonoBehaviour {
 				}
 			}
 			else {
-				if (mutRoll == 2) {
+				if (mutRoll >= 2 && mutRoll <= 3) {
 					mutateBool = true;
 				}
 				else if (mutRoll == 1) {
