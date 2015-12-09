@@ -63,7 +63,7 @@ public class Move : MonoBehaviour {
 		//****************************************
 		while (true)
 		{
-			if (Input.GetMouseButtonDown(0))
+			if (Input.GetMouseButtonDown(0) && global.resource >= cost)
 			{
 				//Debug.LogWarning("Mouse clicked");
 				RaycastHit hit;
