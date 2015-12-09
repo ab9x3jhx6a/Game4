@@ -140,6 +140,7 @@ public class Stats : MonoBehaviour {
 		fedness += amount;
 		if(fedness >= maturation){
 			fedness/=reproductionEfficiency;
+			resetSize();
 			GameObject temp = GameObject.Instantiate(gameObject);
 			Vector2 position = Random.insideUnitCircle * transform.localScale.x * 2;
 			temp.transform.Translate(position.x,0,position.y);
