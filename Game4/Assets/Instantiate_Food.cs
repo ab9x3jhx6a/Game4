@@ -57,7 +57,6 @@ public class Instantiate_Food : MonoBehaviour {
                 Ray ray = camera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit))
                 {
-                    //Transform objectHit = hit.transform;
                     location.x = hit.point.x;
                     location.y = 0;
                     location.z = hit.point.z;
@@ -78,10 +77,6 @@ public class Instantiate_Food : MonoBehaviour {
                 Instantiate(plant, objectPos, Quaternion.identity);
                 Debug.LogWarning(objectPos);*/
                 //Debug.LogWarning("End Loop");
-                break;
-            }
-            else if(Input.GetMouseButtonDown(1))
-            {
                 break;
             }
             //Debug.LogWarning("Looped");
