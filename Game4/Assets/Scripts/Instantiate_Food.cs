@@ -6,14 +6,14 @@ public class Instantiate_Food : MonoBehaviour {
     public Transform plant;
     public Camera camera;
     Global global;
-    public int foodCost;
+    public int foodCost = 15;
     //private Vector3 location;
     //private bool left_click, right_click;
 
 	// Use this for initialization
 	void Start () {
         global = GameObject.FindObjectOfType<Global>();
-        foodCost = 20;
+    //    foodCost = 20;
     }
 	
 	// Update is called once per frame

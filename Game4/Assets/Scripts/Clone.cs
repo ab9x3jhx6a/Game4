@@ -5,12 +5,12 @@ public class Clone : MonoBehaviour {
 
     public Camera camera;
     Global global;
-    public int cloneCost;
+    public int cloneCost = 20;
 
 	// Use this for initialization
 	void Start () {
         global = GameObject.FindObjectOfType<Global>();
-        cloneCost = 10;
+        //cloneCost = 10;
 	}
 	
 	// Update is called once per frame

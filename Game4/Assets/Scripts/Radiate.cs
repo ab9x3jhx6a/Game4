@@ -5,11 +5,11 @@ public class Radiate : MonoBehaviour {
 
     public Camera camera;
     Global global;
-    public int radiateCost;
+    public int radiateCost = 5;
 	// Use this for initialization
 	void Start () {
         global = GameObject.FindObjectOfType<Global>();
-        radiateCost = 5;
+      //  radiateCost = 5;
 	}
 	
 	// Update is called once per frame

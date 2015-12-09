@@ -6,12 +6,12 @@ public class Withdraw : MonoBehaviour {
     public Camera camera;
     //public Stats carnivore;
     public float minimum_fedness;
-    public int withdrawPayment;
+    public int withdrawPayment = 10;
     Global global;
 	// Use this for initialization
 	void Start () {
         global = GameObject.FindObjectOfType<Global>();
-        withdrawPayment = 10;
+   //     withdrawPayment = 10;
 	}
 	
 	// Update is called once per frame
