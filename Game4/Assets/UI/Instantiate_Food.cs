@@ -5,13 +5,14 @@ public class Instantiate_Food : MonoBehaviour {
 
     public Transform plant;
     public Camera camera;
+    Global global;
     //private Vector3 location;
     //private bool left_click, right_click;
 
 	// Use this for initialization
 	void Start () {
-
-	}
+        global = GameObject.FindObjectOfType<Global>();
+    }
 	
 	// Update is called once per frame
 	void Update ()
@@ -50,7 +51,7 @@ public class Instantiate_Food : MonoBehaviour {
     {
         while (true)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && global.resource >= 20)
             {
                 RaycastHit hit;
                 Vector3 location;
@@ -62,14 +63,14 @@ public class Instantiate_Food : MonoBehaviour {
                     location.y = 0;
                     location.z = hit.point.z;
                     Instantiate(plant, location, Quaternion.LookRotation(ray.direction));
-                    //Debug.LogWarning(location);
+                    global.resource -= 20;
+                    Debug.LogWarning(location);
                 }
                 //location = transform.position;
                 //location.y = 0;
                 //Instantiate(plant, location, Quaternion.LookRotation(ray.direction));
 
-                //Debug.LogWarning("Mouse clicked");
-                //Debug.LogWarning(location);
+                Debug.LogWarning("Mouse clicked");
                 /*Vector3 mousePos = Input.mousePosition;
                 mousePos.y = 0;
 
@@ -77,14 +78,14 @@ public class Instantiate_Food : MonoBehaviour {
                 objectPos.y = 0;
                 Instantiate(plant, objectPos, Quaternion.identity);
                 Debug.LogWarning(objectPos);*/
-                //Debug.LogWarning("End Loop");
+                Debug.LogWarning("End Loop");
                 break;
             }
             else if(Input.GetMouseButtonDown(1))
             {
                 break;
             }
-            //Debug.LogWarning("Looped");
+            Debug.LogWarning("Looped");
             yield return null;
         }
     }

@@ -4,9 +4,10 @@ using System.Collections;
 public class Radiate : MonoBehaviour {
 
     public Camera camera;
+    Global global;
 	// Use this for initialization
 	void Start () {
-	
+        global = GameObject.FindObjectOfType<Global>();
 	}
 	
 	// Update is called once per frame
@@ -23,7 +24,7 @@ public class Radiate : MonoBehaviour {
     {
         while (true)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (Input.GetMouseButtonDown(0) && global.resource >= 5)
             {
                 //Debug.LogWarning("Mouse clicked");
                 RaycastHit hit;
@@ -40,6 +41,7 @@ public class Radiate : MonoBehaviour {
                     }
 
                     objectHitMutations.radiation = true;
+                    global.resource -= 5;
                     break;
                 }
             }
