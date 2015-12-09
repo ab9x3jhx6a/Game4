@@ -26,12 +26,12 @@ public class ShowStats : MonoBehaviour {
 		show = false;
 	}
 
-	void OnGUI(){
+	/*void OnGUI(){
 		//Debug.Log ("GUI");
 		if (show) {
             GUI.color = Color.black;
 			//health
-			GUI.Label (new Rect (posx, posy, 200, 20), "Health: " + cell.curHealth.ToString() + "/" + cell.maxHealth.ToString());
+			/*GUI.Label (new Rect (posx, posy, 200, 20), "Health: " + cell.curHealth.ToString() + "/" + cell.maxHealth.ToString());
 			//regen
             GUI.Label(new Rect(posx, posy + 37, 200, 20), "Regen: " + cell.healing.ToString());
 			//speed
@@ -51,7 +51,7 @@ public class ShowStats : MonoBehaviour {
 				GUI.Label (new Rect (posx - 37, posy + 112 + 20 + i*20, 200, 20), mute.mutations[i]);
 			}
 		}
-	}
+	}*/
 	
 	// Update is called once per frame
 	void Update () {
