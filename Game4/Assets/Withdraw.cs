@@ -30,7 +30,7 @@ public class Withdraw : MonoBehaviour {
         {
             if (Input.GetMouseButtonDown(0))
             {
-                Debug.LogWarning("Mouse clicked");
+                //Debug.LogWarning("Mouse clicked");
                 RaycastHit hit;
                 Ray ray = camera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit))
@@ -42,26 +42,26 @@ public class Withdraw : MonoBehaviour {
                         break;
                     }
                     //Stats objectHitStats = hit.transform.gameObject.getComponent<Stats>();
-                    Debug.LogWarning(objectHitStats.carnivoreism);
-                    Debug.LogWarning(objectHitStats.fedness);
+                    //Debug.LogWarning(objectHitStats.carnivoreism);
+                    //Debug.LogWarning(objectHitStats.fedness);
 
                     if (objectHitStats.carnivoreism > 0 && objectHitStats.fedness > minimum_fedness)
                     {
                         GameObject.Destroy(objectHitStats.gameObject);
-                        Debug.LogWarning("Left clicked, done looping");
+                        //Debug.LogWarning("Left clicked, done looping");
                         break;
                     }
-                    Debug.LogWarning(objectHitStats.GetType());
+                    //Debug.LogWarning(objectHitStats.GetType());
                     //if (objectHit.GetType() = "")
                 }
             }
             else if(Input.GetMouseButtonDown(1))
             {
-                Debug.LogWarning("Right clicked, done looping");
+                //Debug.LogWarning("Right clicked, done looping");
                 break;
             }
 
-            Debug.LogWarning("Looping");
+            //Debug.LogWarning("Looping");
             yield return null;
         }
     }
