@@ -1,15 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Radiate : MonoBehaviour {
+public class Clone : MonoBehaviour {
 
     public Camera camera;
     Global global;
-    public int radiateCost;
+    public int cloneCost;
+
 	// Use this for initialization
 	void Start () {
         global = GameObject.FindObjectOfType<Global>();
-        radiateCost = 5;
+        cloneCost = 10;
 	}
 	
 	// Update is called once per frame
@@ -17,7 +18,7 @@ public class Radiate : MonoBehaviour {
 	
 	}
 
-    public void Radiation()
+    public void clone()
     {
         StartCoroutine(MyCoroutine());
     }
@@ -26,31 +27,22 @@ public class Radiate : MonoBehaviour {
     {
         while (true)
         {
-            if (Input.GetMouseButtonDown(0) && global.resource >= radiateCost)
+            if (Input.GetMouseButtonDown(0) && global.resource >= cloneCost)
             {
-                //Debug.LogWarning("Mouse clicked");
                 RaycastHit hit;
-                //Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
                 Ray ray = camera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit))
                 {
                     GameObject objectHit = hit.transform.gameObject;
-                    Mutations objectHitMutations = objectHit.GetComponent<Mutations>();
-                    if (!objectHitMutations)
+                    Stats objectHitStats = objectHit.GetComponent<Stats>();
+                    if (!objectHitStats)
                     {
-                        //Debug.LogWarning("Left clicked, stopped looping");
                         break;
                     }
-
-                    objectHitMutations.radiation = true;
-                    global.resource -= radiateCost;
+                    objectHitStats.feed(objectHitStats.maturation);
+                    global.resource -= cloneCost;
                     break;
                 }
-            }
-            else if(Input.GetMouseButtonDown(1))
-            {
-                //Debug.LogWarning("Right clicked, stopped looping");
-                break;
             }
 
             //Debug.LogWarning("Looping");
