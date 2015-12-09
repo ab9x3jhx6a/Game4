@@ -6,10 +6,12 @@ public class Withdraw : MonoBehaviour {
     public Camera camera;
     //public Stats carnivore;
     public float minimum_fedness;
+    public int withdrawPayment;
     Global global;
 	// Use this for initialization
 	void Start () {
         global = GameObject.FindObjectOfType<Global>();
+        withdrawPayment = 10;
 	}
 	
 	// Update is called once per frame
@@ -50,7 +52,7 @@ public class Withdraw : MonoBehaviour {
                     {
                         GameObject.Destroy(objectHitStats.gameObject);
                         global.extracted();
-                        global.resource += 10;
+                        global.resource += withdrawPayment;
                         //Debug.LogWarning("Left clicked, done looping");
                         break;
                     }
