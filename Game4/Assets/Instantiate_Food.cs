@@ -57,7 +57,6 @@ public class Instantiate_Food : MonoBehaviour {
                 Ray ray = camera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit))
                 {
-                    Transform objectHit = hit.transform;
                     location.x = hit.point.x;
                     location.y = 0;
                     location.z = hit.point.z;
