@@ -29,7 +29,7 @@ public class Global : MonoBehaviour {
             //************************************************
             //****************END THE GAME HERE***************
             //************************************************
-            Application.LoadLevel("VictoryLevel.unity");
+            Application.LoadLevel("VictoryLevel");
         }
     }
 	

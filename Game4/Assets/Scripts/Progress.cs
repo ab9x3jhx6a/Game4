@@ -11,7 +11,7 @@ public class Progress : MonoBehaviour {
 	void Start () {
         progressGoal = GetComponent<Text>();
         global = GameObject.FindObjectOfType<Global>();
-        global.endGoal = 2;
+        global.endGoal = 20;
 	}
 	
 	// Update is called once per frame
