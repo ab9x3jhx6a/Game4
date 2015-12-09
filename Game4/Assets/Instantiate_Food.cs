@@ -80,6 +80,10 @@ public class Instantiate_Food : MonoBehaviour {
                 //Debug.LogWarning("End Loop");
                 break;
             }
+            else if(Input.GetMouseButtonDown(1))
+            {
+                break;
+            }
             //Debug.LogWarning("Looped");
             yield return null;
         }
