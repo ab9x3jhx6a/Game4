@@ -4,6 +4,9 @@ using System.Collections;
 public class Global : MonoBehaviour {
 	public int clumps = 0;
 	public int maxClumps = 20;
+    public int extractedSoFar = 0;
+    public int endGoal = 20;
+    public int resource;
 	
 	public void addClump(Clump clump){
 		clumps++;
@@ -17,5 +20,16 @@ public class Global : MonoBehaviour {
 		}
 		return false;
 	}
+
+    public void extracted()
+    {
+        extractedSoFar++;
+        if (extractedSoFar == endGoal)
+        {
+            //************************************************
+            //****************END THE GAME HERE***************
+            //************************************************
+        }
+    }
 	
 }

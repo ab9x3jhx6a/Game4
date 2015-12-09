@@ -6,9 +6,10 @@ public class Withdraw : MonoBehaviour {
     public Camera camera;
     //public Stats carnivore;
     public float minimum_fedness;
+    Global global;
 	// Use this for initialization
 	void Start () {
-	
+        global = GameObject.FindObjectOfType<Global>();
 	}
 	
 	// Update is called once per frame
@@ -48,6 +49,8 @@ public class Withdraw : MonoBehaviour {
                     if (objectHitStats.carnivoreism > 0 && objectHitStats.fedness > minimum_fedness)
                     {
                         GameObject.Destroy(objectHitStats.gameObject);
+                        global.extracted();
+                        global.resource += 10;
                         //Debug.LogWarning("Left clicked, done looping");
                         break;
                     }

@@ -2,19 +2,20 @@
 using UnityEngine.UI;
 using System.Collections;
 
-public class Progress : MonoBehaviour {
+public class Resource : MonoBehaviour {
 
     Global global;
-    Text progressGoal;
+    Text resource_count;
 
 	// Use this for initialization
 	void Start () {
-        progressGoal = GetComponent<Text>();
+        resource_count = GetComponent<Text>();
         global = GameObject.FindObjectOfType<Global>();
+        global.resource = 50;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-	    progressGoal.text = global.extractedSoFar + "/" + global.endGoal;
+        resource_count.text = "$" + global.resource;
 	}
 }
