@@ -10,7 +10,7 @@ public class Clump : MonoBehaviour {
 	public IList<Stats> children;
 	
 	public Vector2 direction;
-	
+	public bool spawning = false;
 	public float patience = 5;
 	public float timer = 0;
 	
@@ -53,6 +53,7 @@ public class Clump : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+		spawning = Random.value > .8;
 		Vector3 temp = new Vector3(direction.x,0,direction.y) * speed;
 		r.AddForce(temp);
 		timer -= Time.deltaTime;
@@ -89,7 +90,8 @@ public class Clump : MonoBehaviour {
 			fedness -= temp;
 			childstats.feed(temp);
 		}else if(childstats.fedness > maxChildFedness){
-			if(fedness > maturation && maxSize >= children.Count){
+			if(fedness > maturation && maxSize >= children.Count && spawning){
+				spawning = false;
 				float temp = childstats.maturation;
 				fedness -= temp;
 				childstats.feed(temp);
