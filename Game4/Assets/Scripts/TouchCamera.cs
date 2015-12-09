@@ -13,7 +13,6 @@ public class TouchCamera : MonoBehaviour {
 	private float dragSpeed = 2;
 	Camera main;
 
-
 	// Use this for initialization
 	void Start () {
 		main = gameObject.GetComponent<Camera> ();
