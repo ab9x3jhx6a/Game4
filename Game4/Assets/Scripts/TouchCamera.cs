@@ -35,7 +35,7 @@ public class TouchCamera : MonoBehaviour {
 		if (!Input.GetMouseButton(0)) return;
 		
 		Vector3 pos = main.ScreenToViewportPoint(Input.mousePosition - dragOrigin);
-		Vector3 move = new Vector3(pos.x * dragSpeed, 0, pos.y * dragSpeed);
+		Vector3 move = new Vector3(-pos.x * dragSpeed, 0, -pos.y * dragSpeed);
 		
 		transform.Translate(move, Space.World);  
 	}
