@@ -100,7 +100,7 @@ public class Clump : MonoBehaviour {
 				fedness += temp;
 				childstats.feed (temp * -1);
 				Vector2 tempdir = new Vector2(childstats.transform.position.x,childstats.transform.position.z).normalized;
-				tryChangeDirection(tempdir);
+				//tryChangeDirection(tempdir);
 			}
 		}
 	}
