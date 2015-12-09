@@ -16,6 +16,7 @@ public class GameTime : MonoBehaviour {
 	void Start () {
         startTime = Time.time;
         shownTime = GetComponent<Text>();
+        //Debug.LogWarning(shownTime.text[0] +  "" + shownTime.text[1] + shownTime.text[2]);
 	}
 	
 	// Update is called once per frame

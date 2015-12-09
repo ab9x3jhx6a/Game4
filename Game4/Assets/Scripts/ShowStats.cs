@@ -12,8 +12,9 @@ public class ShowStats : MonoBehaviour {
 		cell = gameObject.GetComponent<Stats> ();
 		mute = gameObject.GetComponent<Mutations> ();
 		show = false;
-		posx = 15;
-		posy = 20;
+		posx = 50;
+		posy = 15;
+        GUI.color = Color.black;
 	}
 
 	void OnMouseEnter(){
@@ -28,25 +29,26 @@ public class ShowStats : MonoBehaviour {
 	void OnGUI(){
 		//Debug.Log ("GUI");
 		if (show) {
+            GUI.color = Color.black;
 			//health
 			GUI.Label (new Rect (posx, posy, 200, 20), "Health: " + cell.curHealth.ToString() + "/" + cell.maxHealth.ToString());
-			//maturation
-			GUI.Label (new Rect (posx, posy + 20, 200, 20), "Maturation: " + cell.maturation.ToString());
-			//metabolism
-			GUI.Label (new Rect (posx, posy + 40, 200, 20), "Metabolism: " + cell.metabolism.ToString());
-			//sight radius
-			GUI.Label (new Rect (posx, posy + 60, 200, 20), "Sight Radius: " + cell.sightRadius.ToString());
+			//regen
+            GUI.Label(new Rect(posx, posy + 37, 200, 20), "Regen: " + cell.healing.ToString());
 			//speed
-			GUI.Label (new Rect (posx, posy + 80, 200, 20), "Speed: " + cell.speed.ToString());
-			//regeneration
-			GUI.Label (new Rect (posx, posy + 100, 200, 20), "Metabolism: " + cell.healing.ToString());
+            GUI.Label(new Rect(posx, posy + 75, 200, 20), "Speed: " + cell.speed.ToString());
+			//maturation
+            GUI.Label(new Rect(posx + 175, posy, 200, 20), "Maturation: " + cell.maturation.ToString());
+			//metabolism
+            GUI.Label(new Rect(posx + 175, posy + 37, 200, 20), "Metabolism: " + cell.metabolism.ToString());
+			//sight radius
+            GUI.Label(new Rect(posx + 175, posy + 75, 200, 20), "Sight Radius: " + cell.sightRadius.ToString());
 
 			int length = mute.mutations.Count;
 
-			GUI.Label (new Rect (posx + 200, posy, 200, 20), "Mutations:");
+			GUI.Label (new Rect (posx - 37, posy + 112, 200, 20), "Mutations:");
 
 			for (int i=0; i< length; i++){
-				GUI.Label (new Rect (posx + 200, posy + 20 + i*20, 200, 20), mute.mutations[i]);
+				GUI.Label (new Rect (posx - 37, posy + 112 + 20 + i*20, 200, 20), mute.mutations[i]);
 			}
 		}
 	}
