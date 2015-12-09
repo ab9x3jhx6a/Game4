@@ -5,7 +5,7 @@ public class Global : MonoBehaviour {
 	public int clumps = 0;
 	public int maxClumps = 20;
     public int extractedSoFar = 0;
-    public int endGoal = 20;
+    public int endGoal;
     public int resource;
 	
 	public void addClump(Clump clump){
@@ -29,6 +29,7 @@ public class Global : MonoBehaviour {
             //************************************************
             //****************END THE GAME HERE***************
             //************************************************
+            Application.LoadLevel("VictoryLevel.unity");
         }
     }
 	
