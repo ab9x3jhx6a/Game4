@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Radiate : MonoBehaviour {
 
+    public Camera camera;
 	// Use this for initialization
 	void Start () {
 	
@@ -26,7 +27,8 @@ public class Radiate : MonoBehaviour {
             {
                 Debug.LogWarning("Mouse clicked");
                 RaycastHit hit;
-                Ray ray = camera.ScreenPointToRay(Input.mouseposition);
+                //Ray ray = GetComponent<Camera>().ScreenPointToRay(Input.mousePosition);
+                Ray ray = camera.ScreenPointToRay(Input.mousePosition);
                 if (Physics.Raycast(ray, out hit))
                 {
                     GameObject objectHit = hit.transform.gameObject;
@@ -38,6 +40,7 @@ public class Radiate : MonoBehaviour {
                     }
 
                     objectHitMutations.radiation = true;
+                    break;
                 }
             }
             else if(Input.GetMouseButtonDown(1))
