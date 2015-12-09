@@ -6,12 +6,14 @@ public class Instantiate_Food : MonoBehaviour {
     public Transform plant;
     public Camera camera;
     Global global;
+    public int foodCost;
     //private Vector3 location;
     //private bool left_click, right_click;
 
 	// Use this for initialization
 	void Start () {
         global = GameObject.FindObjectOfType<Global>();
+        foodCost = 20;
     }
 	
 	// Update is called once per frame
@@ -51,7 +53,7 @@ public class Instantiate_Food : MonoBehaviour {
     {
         while (true)
         {
-            if (Input.GetMouseButtonDown(0) && global.resource >= 20)
+            if (Input.GetMouseButtonDown(0) && global.resource >= foodCost)
             {
                 RaycastHit hit;
                 Vector3 location;
@@ -63,7 +65,7 @@ public class Instantiate_Food : MonoBehaviour {
                     location.y = 0;
                     location.z = hit.point.z;
                     Instantiate(plant, location, Quaternion.LookRotation(ray.direction));
-                    global.resource -= 20;
+                    global.resource -= foodCost;
                     Debug.LogWarning(location);
                 }
                 //location = transform.position;
